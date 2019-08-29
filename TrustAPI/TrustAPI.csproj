@@ -209,6 +209,9 @@
     <Compile Include="Models\Ms_Vehicle_Models.cs">
       <DependentUpon>EntityTRUST.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tr_BSTKAfters.cs">
+      <DependentUpon>EntityTRUST.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tr_BSTKBefores.cs">
       <DependentUpon>EntityTRUST.tt</DependentUpon>
     </Compile>

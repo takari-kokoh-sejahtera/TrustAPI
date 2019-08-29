@@ -14,6 +14,12 @@ namespace TrustAPI.Models
     
     public partial class Tr_BSTKBefores
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tr_BSTKBefores()
+        {
+            this.Tr_BSTKAfters = new HashSet<Tr_BSTKAfters>();
+        }
+    
         public int BSTKBefore_ID { get; set; }
         public Nullable<int> Customer_ID { get; set; }
         public Nullable<int> Vehicle_ID { get; set; }
@@ -112,7 +118,6 @@ namespace TrustAPI.Models
         public string Lap_Kanebo { get; set; }
         public string Lap_Kanebo_Ket { get; set; }
         public string Foto_Kendaraan_Tampak_Depan { get; set; }
-        public string Foto_Kendaraan_Tampak_Depan_decode { get; set; }
         public string Foto_Kendaraan_Tampak_Belakang { get; set; }
         public string Foto_Kendaraan_Tampak_Samping_Kanan { get; set; }
         public string Foto_Kendaraan_Tampak_Samping_Kiri { get; set; }
@@ -125,8 +130,17 @@ namespace TrustAPI.Models
         public string tutup_dop { get; set; }
         public string signature { get; set; }
         public string signature_image { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<int> ModifiedBy { get; set; }
+        public bool IsDeleted { get; set; }
     
+        public virtual Cn_Users Cn_Users { get; set; }
+        public virtual Cn_Users Cn_Users1 { get; set; }
         public virtual Ms_Customers Ms_Customers { get; set; }
         public virtual Ms_Vehicles Ms_Vehicles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tr_BSTKAfters> Tr_BSTKAfters { get; set; }
     }
 }

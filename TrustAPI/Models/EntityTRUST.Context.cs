@@ -32,5 +32,6 @@ namespace TrustAPI.Models
         public virtual DbSet<Ms_Vehicle_Models> Ms_Vehicle_Models { get; set; }
         public virtual DbSet<Ms_Vehicles> Ms_Vehicles { get; set; }
         public virtual DbSet<Tr_BSTKBefores> Tr_BSTKBefores { get; set; }
+        public virtual DbSet<Tr_BSTKAfters> Tr_BSTKAfters { get; set; }
     }
 }
