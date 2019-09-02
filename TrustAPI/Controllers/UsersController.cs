@@ -34,6 +34,7 @@ namespace TrustAPI.Controllers
             {
                 results.Status = "Success";
                 results.Message = "Yes, you are";
+                results.Value = db.Cn_Users.Where(x => x.User_Name == user.User_Name && x.Password == cipherText).Select(x => x.User_ID).FirstOrDefault();
             }
 
             return Json(results);

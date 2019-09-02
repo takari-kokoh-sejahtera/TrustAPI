@@ -24,14 +24,14 @@
         <AssociationConnector Association="TrustModel.FK__Ms_Custom__Compa__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="TrustModel.FK__Ms_Vehicl__Brand__5EBF139D" ManuallyRouted="false" />
         <AssociationConnector Association="TrustModel.FK__Ms_Vehicl__Model__53F76C67" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TrustModel.Tr_BSTKBefores" Width="1.5" PointX="12.75" PointY="3.625" />
+        <EntityTypeShape EntityType="TrustModel.Tr_BSTKAfters" Width="1.5" PointX="15" PointY="3.875" />
+        <AssociationConnector Association="TrustModel.FK__Tr_BSTKAf__Creat__6399A2AA" />
+        <AssociationConnector Association="TrustModel.FK__Tr_BSTKAf__Modif__648DC6E3" />
+        <EntityTypeShape EntityType="TrustModel.Tr_BSTKBefores" Width="1.5" PointX="12.75" PointY="3.375" />
         <AssociationConnector Association="TrustModel.FK__Tr_BSTKBe__Creat__4420F751" />
         <AssociationConnector Association="TrustModel.FK__Tr_BSTKBe__Modif__45151B8A" />
         <AssociationConnector Association="TrustModel.FK__Tr_BSTKBe__Custo__37BB206C" />
         <AssociationConnector Association="TrustModel.FK__Tr_BSTKBe__Vehic__38AF44A5" />
-        <EntityTypeShape EntityType="TrustModel.Tr_BSTKAfters" Width="1.5" PointX="15" PointY="3.875" />
-        <AssociationConnector Association="TrustModel.FK__Tr_BSTKAf__Creat__6399A2AA" />
-        <AssociationConnector Association="TrustModel.FK__Tr_BSTKAf__Modif__648DC6E3" />
         <AssociationConnector Association="TrustModel.FK__Tr_BSTKAf__BSTKB__62A57E71" />
         </Diagram>
     </edmx:Diagrams>

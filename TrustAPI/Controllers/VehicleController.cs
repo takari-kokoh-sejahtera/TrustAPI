@@ -25,16 +25,21 @@ namespace TrustAPI.Controllers
         }
 
         // GET: api/Vehicle/5
-        [ResponseType(typeof(Ms_Vehicles))]
-        public IHttpActionResult GetMs_Vehicles(int id)
+        public Ms_Vehicle GetMs_Vehicles(int id)
         {
-            Ms_Vehicles ms_Vehicles = db.Ms_Vehicles.Find(id);
+            Ms_Vehicle ms_Vehicles = db.Ms_Vehicles.Where(x => x.IsDeleted == false).Select(x => new Ms_Vehicle
+            {
+                license_no = x.license_no,
+                Vehicle_id = x.Vehicle_id,
+                Brand_Name = x.Ms_Vehicle_Models.Ms_Vehicle_Brands.Brand_Name,
+                type = x.Ms_Vehicle_Models.Type
+            }).FirstOrDefault();
             if (ms_Vehicles == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(ms_Vehicles);
+            return ms_Vehicles;
         }
 
         // PUT: api/Vehicle/5

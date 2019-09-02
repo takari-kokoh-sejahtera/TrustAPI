@@ -407,6 +407,7 @@
           <Property Name="tutup_dop" Type="varchar" MaxLength="20" />
           <Property Name="signature" Type="varchar" MaxLength="100" />
           <Property Name="signature_image" Type="varchar(max)" />
+          <Property Name="IsCompleted" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" />
@@ -780,10 +781,10 @@
           <NavigationProperty Name="Ms_Vehicles1" Relationship="Self.FK__Ms_Vehicl__Modif__5303482E" FromRole="Cn_Users" ToRole="Ms_Vehicles" />
           <NavigationProperty Name="Ms_Vehicle_Brands1" Relationship="Self.FK__Ms_Vehicl__Modif__73A521EA" FromRole="Cn_Users" ToRole="Ms_Vehicle_Brands" />
           <NavigationProperty Name="Ms_Vehicle_Models1" Relationship="Self.FK__Ms_Vehicl__Modif__758D6A5C" FromRole="Cn_Users" ToRole="Ms_Vehicle_Models" />
-          <NavigationProperty Name="Tr_BSTKBefores" Relationship="TrustModel.FK__Tr_BSTKBe__Creat__4420F751" FromRole="Cn_Users" ToRole="Tr_BSTKBefores" />
-          <NavigationProperty Name="Tr_BSTKBefores1" Relationship="TrustModel.FK__Tr_BSTKBe__Modif__45151B8A" FromRole="Cn_Users" ToRole="Tr_BSTKBefores" />
           <NavigationProperty Name="Tr_BSTKAfters" Relationship="TrustModel.FK__Tr_BSTKAf__Creat__6399A2AA" FromRole="Cn_Users" ToRole="Tr_BSTKAfters" />
           <NavigationProperty Name="Tr_BSTKAfters1" Relationship="TrustModel.FK__Tr_BSTKAf__Modif__648DC6E3" FromRole="Cn_Users" ToRole="Tr_BSTKAfters" />
+          <NavigationProperty Name="Tr_BSTKBefores" Relationship="TrustModel.FK__Tr_BSTKBe__Creat__4420F751" FromRole="Cn_Users" ToRole="Tr_BSTKBefores" />
+          <NavigationProperty Name="Tr_BSTKBefores1" Relationship="TrustModel.FK__Tr_BSTKBe__Modif__45151B8A" FromRole="Cn_Users" ToRole="Tr_BSTKBefores" />
           </EntityType>
         <EntityType Name="Ms_Customer_CompanyGroups">
           <Key>
@@ -1163,6 +1164,15 @@
             <End Role="Ms_Vehicle_Models" EntitySet="Ms_Vehicle_Models" />
             <End Role="Ms_Vehicles" EntitySet="Ms_Vehicles" />
           </AssociationSet>
+          <EntitySet Name="Tr_BSTKAfters" EntityType="TrustModel.Tr_BSTKAfters" />
+          <AssociationSet Name="FK__Tr_BSTKAf__Creat__6399A2AA" Association="TrustModel.FK__Tr_BSTKAf__Creat__6399A2AA">
+            <End Role="Cn_Users" EntitySet="Cn_Users" />
+            <End Role="Tr_BSTKAfters" EntitySet="Tr_BSTKAfters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tr_BSTKAf__Modif__648DC6E3" Association="TrustModel.FK__Tr_BSTKAf__Modif__648DC6E3">
+            <End Role="Cn_Users" EntitySet="Cn_Users" />
+            <End Role="Tr_BSTKAfters" EntitySet="Tr_BSTKAfters" />
+          </AssociationSet>
           <EntitySet Name="Tr_BSTKBefores" EntityType="TrustModel.Tr_BSTKBefores" />
           <AssociationSet Name="FK__Tr_BSTKBe__Creat__4420F751" Association="TrustModel.FK__Tr_BSTKBe__Creat__4420F751">
             <End Role="Cn_Users" EntitySet="Cn_Users" />
@@ -1180,193 +1190,11 @@
             <End Role="Ms_Vehicles" EntitySet="Ms_Vehicles" />
             <End Role="Tr_BSTKBefores" EntitySet="Tr_BSTKBefores" />
           </AssociationSet>
-          <EntitySet Name="Tr_BSTKAfters" EntityType="TrustModel.Tr_BSTKAfters" />
-          <AssociationSet Name="FK__Tr_BSTKAf__Creat__6399A2AA" Association="TrustModel.FK__Tr_BSTKAf__Creat__6399A2AA">
-            <End Role="Cn_Users" EntitySet="Cn_Users" />
-            <End Role="Tr_BSTKAfters" EntitySet="Tr_BSTKAfters" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tr_BSTKAf__Modif__648DC6E3" Association="TrustModel.FK__Tr_BSTKAf__Modif__648DC6E3">
-            <End Role="Cn_Users" EntitySet="Cn_Users" />
-            <End Role="Tr_BSTKAfters" EntitySet="Tr_BSTKAfters" />
-          </AssociationSet>
           <AssociationSet Name="FK__Tr_BSTKAf__BSTKB__62A57E71" Association="TrustModel.FK__Tr_BSTKAf__BSTKB__62A57E71">
             <End Role="Tr_BSTKBefores" EntitySet="Tr_BSTKBefores" />
             <End Role="Tr_BSTKAfters" EntitySet="Tr_BSTKAfters" />
           </AssociationSet>
           </EntityContainer>
-        <EntityType Name="Tr_BSTKBefores">
-          <Key>
-            <PropertyRef Name="BSTKBefore_ID" />
-          </Key>
-          <Property Name="BSTKBefore_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Customer_ID" Type="Int32" />
-          <Property Name="Vehicle_ID" Type="Int32" />
-          <Property Name="Automatic_Light_Switch" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Automatic_Light_Switch_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Kecil" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Kecil_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Dekat" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Dekat_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Jauh" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Jauh_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Kabut_Fog_Lamp" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Kabut_Fog_Lamp_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Sign_Depan" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Sign_Depan_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Sign_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Sign_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Rem" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Rem_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Mundur" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Mundur_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Dashboard" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Dashboard_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Plafond_Depan_dan_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lampu_Plafond_Depan_dan_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Klakson" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Klakson_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Antena" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Antena_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Tape_Radio_CD_DVD_TV_Player" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Tape_Radio_CD_DVD_TV_Player_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Remote_Tape_Radio_CD_DVD_TV_Player" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Remote_Tape_Radio_CD_DVD_TV_Player_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Alarm_Remote_Key" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Alarm_Remote_Key_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Central_Lock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Central_Lock_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Power_Window" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Power_Window_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Switch_Mirror" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Switch_Mirror_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Air_Conditioner" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Air_Conditioner_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Safety_Belt" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Safety_Belt_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Karpet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Karpet_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lighter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lighter_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Asbak" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Asbak_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sarung_Jok" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Sarung_Jok_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sandaran_Kepala" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Sandaran_Kepala_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Spion_Dalam" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Spion_Dalam_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Wiper_Blade" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Wiper_Blade_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Windshield_Washer" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Windshield_Washer_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Talang_Air" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Talang_Air_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Fender_Lumpur_Depan_dan_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Fender_Lumpur_Depan_dan_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Spion_Kiri_Kanan" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Spion_Kiri_Kanan_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Tutup_Bensin" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Tutup_Bensin_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Emblem_Logo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Emblem_Logo_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Kaca_Mobil_dan_Kaca_Film" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Kaca_Mobil_dan_Kaca_Film_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="STNK" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="STNK_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Buku_KIR_Stiker_Peneng" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Buku_KIR_Stiker_Peneng_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Owners_Manual_Book" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Owners_Manual_Book_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Buku_Service" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Buku_Service_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Ban_Serep" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Ban_Serep_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Kunci_Roda_Busi_Pas_Tang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Kunci_Roda_Busi_Pas_Tang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Kunci_Stir" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Kunci_Stir_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Dongkrak" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Dongkrak_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="P3K" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="P3K_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Segitiga_Pengaman" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Segitiga_Pengaman_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Lap_Kanebo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Lap_Kanebo_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Foto_Kendaraan_Tampak_Depan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Foto_Kendaraan_Tampak_Belakang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Foto_Kendaraan_Tampak_Samping_Kanan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Foto_Kendaraan_Tampak_Samping_Kiri" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="apar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="fuel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="isi_tangki" Type="Int32" />
-          <Property Name="isi_tangki_ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="km" Type="Int32" />
-          <Property Name="velg_ban" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="tutup_dop" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="signature" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="signature_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Cn_Users" Relationship="TrustModel.FK__Tr_BSTKBe__Creat__4420F751" FromRole="Tr_BSTKBefores" ToRole="Cn_Users" />
-          <NavigationProperty Name="Cn_Users1" Relationship="TrustModel.FK__Tr_BSTKBe__Modif__45151B8A" FromRole="Tr_BSTKBefores" ToRole="Cn_Users" />
-          <NavigationProperty Name="Ms_Customers" Relationship="TrustModel.FK__Tr_BSTKBe__Custo__37BB206C" FromRole="Tr_BSTKBefores" ToRole="Ms_Customers" />
-          <NavigationProperty Name="Ms_Vehicles" Relationship="TrustModel.FK__Tr_BSTKBe__Vehic__38AF44A5" FromRole="Tr_BSTKBefores" ToRole="Ms_Vehicles" />
-          <NavigationProperty Name="Tr_BSTKAfters" Relationship="TrustModel.FK__Tr_BSTKAf__BSTKB__62A57E71" FromRole="Tr_BSTKBefores" ToRole="Tr_BSTKAfters" />
-        </EntityType>
-        <Association Name="FK__Tr_BSTKBe__Creat__4420F751">
-          <End Type="TrustModel.Cn_Users" Role="Cn_Users" Multiplicity="1" />
-          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cn_Users">
-              <PropertyRef Name="User_ID" />
-            </Principal>
-            <Dependent Role="Tr_BSTKBefores">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tr_BSTKBe__Modif__45151B8A">
-          <End Type="TrustModel.Cn_Users" Role="Cn_Users" Multiplicity="0..1" />
-          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cn_Users">
-              <PropertyRef Name="User_ID" />
-            </Principal>
-            <Dependent Role="Tr_BSTKBefores">
-              <PropertyRef Name="ModifiedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tr_BSTKBe__Custo__37BB206C">
-          <End Type="TrustModel.Ms_Customers" Role="Ms_Customers" Multiplicity="0..1" />
-          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ms_Customers">
-              <PropertyRef Name="Customer_ID" />
-            </Principal>
-            <Dependent Role="Tr_BSTKBefores">
-              <PropertyRef Name="Customer_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tr_BSTKBe__Vehic__38AF44A5">
-          <End Type="TrustModel.Ms_Vehicles" Role="Ms_Vehicles" Multiplicity="0..1" />
-          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ms_Vehicles">
-              <PropertyRef Name="Vehicle_id" />
-            </Principal>
-            <Dependent Role="Tr_BSTKBefores">
-              <PropertyRef Name="Vehicle_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Tr_BSTKAfters">
           <Key>
             <PropertyRef Name="BSTKAfter_ID" />
@@ -1510,6 +1338,180 @@
             </Principal>
             <Dependent Role="Tr_BSTKAfters">
               <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tr_BSTKBefores">
+          <Key>
+            <PropertyRef Name="BSTKBefore_ID" />
+          </Key>
+          <Property Name="BSTKBefore_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="Vehicle_ID" Type="Int32" />
+          <Property Name="Automatic_Light_Switch" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Automatic_Light_Switch_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Kecil" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Kecil_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Dekat" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Dekat_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Jauh" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Jauh_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Kabut_Fog_Lamp" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Kabut_Fog_Lamp_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Sign_Depan" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Sign_Depan_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Sign_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Sign_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Rem" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Rem_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Mundur" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Mundur_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Dashboard" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Dashboard_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Plafond_Depan_dan_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lampu_Plafond_Depan_dan_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Klakson" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Klakson_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Antena" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Antena_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tape_Radio_CD_DVD_TV_Player" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Tape_Radio_CD_DVD_TV_Player_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Remote_Tape_Radio_CD_DVD_TV_Player" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Remote_Tape_Radio_CD_DVD_TV_Player_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Alarm_Remote_Key" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Alarm_Remote_Key_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Central_Lock" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Central_Lock_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Power_Window" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Power_Window_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Switch_Mirror" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Switch_Mirror_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Air_Conditioner" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Air_Conditioner_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Safety_Belt" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Safety_Belt_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Karpet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Karpet_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lighter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lighter_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Asbak" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Asbak_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sarung_Jok" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Sarung_Jok_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sandaran_Kepala" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Sandaran_Kepala_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Spion_Dalam" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Spion_Dalam_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Wiper_Blade" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Wiper_Blade_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Windshield_Washer" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Windshield_Washer_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Talang_Air" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Talang_Air_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fender_Lumpur_Depan_dan_Belakang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Fender_Lumpur_Depan_dan_Belakang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Spion_Kiri_Kanan" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Spion_Kiri_Kanan_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tutup_Bensin" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Tutup_Bensin_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Emblem_Logo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Emblem_Logo_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Kaca_Mobil_dan_Kaca_Film" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Kaca_Mobil_dan_Kaca_Film_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="STNK" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STNK_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Buku_KIR_Stiker_Peneng" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Buku_KIR_Stiker_Peneng_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Owners_Manual_Book" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Owners_Manual_Book_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Buku_Service" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Buku_Service_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ban_Serep" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Ban_Serep_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Kunci_Roda_Busi_Pas_Tang" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Kunci_Roda_Busi_Pas_Tang_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Kunci_Stir" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Kunci_Stir_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dongkrak" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Dongkrak_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="P3K" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="P3K_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Segitiga_Pengaman" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Segitiga_Pengaman_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lap_Kanebo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Lap_Kanebo_Ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Foto_Kendaraan_Tampak_Depan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Foto_Kendaraan_Tampak_Belakang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Foto_Kendaraan_Tampak_Samping_Kanan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Foto_Kendaraan_Tampak_Samping_Kiri" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="apar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fuel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isi_tangki" Type="Int32" />
+          <Property Name="isi_tangki_ket" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="km" Type="Int32" />
+          <Property Name="velg_ban" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tutup_dop" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="signature" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="signature_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsCompleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cn_Users" Relationship="TrustModel.FK__Tr_BSTKBe__Creat__4420F751" FromRole="Tr_BSTKBefores" ToRole="Cn_Users" />
+          <NavigationProperty Name="Cn_Users1" Relationship="TrustModel.FK__Tr_BSTKBe__Modif__45151B8A" FromRole="Tr_BSTKBefores" ToRole="Cn_Users" />
+          <NavigationProperty Name="Ms_Customers" Relationship="TrustModel.FK__Tr_BSTKBe__Custo__37BB206C" FromRole="Tr_BSTKBefores" ToRole="Ms_Customers" />
+          <NavigationProperty Name="Ms_Vehicles" Relationship="TrustModel.FK__Tr_BSTKBe__Vehic__38AF44A5" FromRole="Tr_BSTKBefores" ToRole="Ms_Vehicles" />
+          <NavigationProperty Name="Tr_BSTKAfters" Relationship="TrustModel.FK__Tr_BSTKAf__BSTKB__62A57E71" FromRole="Tr_BSTKBefores" ToRole="Tr_BSTKAfters" />
+        </EntityType>
+        <Association Name="FK__Tr_BSTKBe__Creat__4420F751">
+          <End Type="TrustModel.Cn_Users" Role="Cn_Users" Multiplicity="1" />
+          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cn_Users">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Tr_BSTKBefores">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tr_BSTKBe__Modif__45151B8A">
+          <End Type="TrustModel.Cn_Users" Role="Cn_Users" Multiplicity="0..1" />
+          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cn_Users">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Tr_BSTKBefores">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tr_BSTKBe__Custo__37BB206C">
+          <End Type="TrustModel.Ms_Customers" Role="Ms_Customers" Multiplicity="0..1" />
+          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ms_Customers">
+              <PropertyRef Name="Customer_ID" />
+            </Principal>
+            <Dependent Role="Tr_BSTKBefores">
+              <PropertyRef Name="Customer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tr_BSTKBe__Vehic__38AF44A5">
+          <End Type="TrustModel.Ms_Vehicles" Role="Ms_Vehicles" Multiplicity="0..1" />
+          <End Type="TrustModel.Tr_BSTKBefores" Role="Tr_BSTKBefores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ms_Vehicles">
+              <PropertyRef Name="Vehicle_id" />
+            </Principal>
+            <Dependent Role="Tr_BSTKBefores">
+              <PropertyRef Name="Vehicle_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1706,127 +1708,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tr_BSTKBefores">
-            <EntityTypeMapping TypeName="TrustModel.Tr_BSTKBefores">
-              <MappingFragment StoreEntitySet="Tr_BSTKBefores">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="signature_image" ColumnName="signature_image" />
-                <ScalarProperty Name="signature" ColumnName="signature" />
-                <ScalarProperty Name="tutup_dop" ColumnName="tutup_dop" />
-                <ScalarProperty Name="velg_ban" ColumnName="velg_ban" />
-                <ScalarProperty Name="km" ColumnName="km" />
-                <ScalarProperty Name="isi_tangki_ket" ColumnName="isi_tangki_ket" />
-                <ScalarProperty Name="isi_tangki" ColumnName="isi_tangki" />
-                <ScalarProperty Name="fuel" ColumnName="fuel" />
-                <ScalarProperty Name="apar" ColumnName="apar" />
-                <ScalarProperty Name="Foto_Kendaraan_Tampak_Samping_Kiri" ColumnName="Foto_Kendaraan_Tampak_Samping_Kiri" />
-                <ScalarProperty Name="Foto_Kendaraan_Tampak_Samping_Kanan" ColumnName="Foto_Kendaraan_Tampak_Samping_Kanan" />
-                <ScalarProperty Name="Foto_Kendaraan_Tampak_Belakang" ColumnName="Foto_Kendaraan_Tampak_Belakang" />
-                <ScalarProperty Name="Foto_Kendaraan_Tampak_Depan" ColumnName="Foto_Kendaraan_Tampak_Depan" />
-                <ScalarProperty Name="Lap_Kanebo_Ket" ColumnName="Lap_Kanebo_Ket" />
-                <ScalarProperty Name="Lap_Kanebo" ColumnName="Lap_Kanebo" />
-                <ScalarProperty Name="Segitiga_Pengaman_Ket" ColumnName="Segitiga_Pengaman_Ket" />
-                <ScalarProperty Name="Segitiga_Pengaman" ColumnName="Segitiga_Pengaman" />
-                <ScalarProperty Name="P3K_Ket" ColumnName="P3K_Ket" />
-                <ScalarProperty Name="P3K" ColumnName="P3K" />
-                <ScalarProperty Name="Dongkrak_Ket" ColumnName="Dongkrak_Ket" />
-                <ScalarProperty Name="Dongkrak" ColumnName="Dongkrak" />
-                <ScalarProperty Name="Kunci_Stir_Ket" ColumnName="Kunci_Stir_Ket" />
-                <ScalarProperty Name="Kunci_Stir" ColumnName="Kunci_Stir" />
-                <ScalarProperty Name="Kunci_Roda_Busi_Pas_Tang_Ket" ColumnName="Kunci_Roda_Busi_Pas_Tang_Ket" />
-                <ScalarProperty Name="Kunci_Roda_Busi_Pas_Tang" ColumnName="Kunci_Roda_Busi_Pas_Tang" />
-                <ScalarProperty Name="Ban_Serep_Ket" ColumnName="Ban_Serep_Ket" />
-                <ScalarProperty Name="Ban_Serep" ColumnName="Ban_Serep" />
-                <ScalarProperty Name="Buku_Service_Ket" ColumnName="Buku_Service_Ket" />
-                <ScalarProperty Name="Buku_Service" ColumnName="Buku_Service" />
-                <ScalarProperty Name="Owners_Manual_Book_Ket" ColumnName="Owners_Manual_Book_Ket" />
-                <ScalarProperty Name="Owners_Manual_Book" ColumnName="Owners_Manual_Book" />
-                <ScalarProperty Name="Buku_KIR_Stiker_Peneng_Ket" ColumnName="Buku_KIR_Stiker_Peneng_Ket" />
-                <ScalarProperty Name="Buku_KIR_Stiker_Peneng" ColumnName="Buku_KIR_Stiker_Peneng" />
-                <ScalarProperty Name="STNK_Ket" ColumnName="STNK_Ket" />
-                <ScalarProperty Name="STNK" ColumnName="STNK" />
-                <ScalarProperty Name="Kaca_Mobil_dan_Kaca_Film_Ket" ColumnName="Kaca_Mobil_dan_Kaca_Film_Ket" />
-                <ScalarProperty Name="Kaca_Mobil_dan_Kaca_Film" ColumnName="Kaca_Mobil_dan_Kaca_Film" />
-                <ScalarProperty Name="Emblem_Logo_Ket" ColumnName="Emblem_Logo_Ket" />
-                <ScalarProperty Name="Emblem_Logo" ColumnName="Emblem_Logo" />
-                <ScalarProperty Name="Tutup_Bensin_Ket" ColumnName="Tutup_Bensin_Ket" />
-                <ScalarProperty Name="Tutup_Bensin" ColumnName="Tutup_Bensin" />
-                <ScalarProperty Name="Spion_Kiri_Kanan_Ket" ColumnName="Spion_Kiri_Kanan_Ket" />
-                <ScalarProperty Name="Spion_Kiri_Kanan" ColumnName="Spion_Kiri_Kanan" />
-                <ScalarProperty Name="Fender_Lumpur_Depan_dan_Belakang_Ket" ColumnName="Fender_Lumpur_Depan_dan_Belakang_Ket" />
-                <ScalarProperty Name="Fender_Lumpur_Depan_dan_Belakang" ColumnName="Fender_Lumpur_Depan_dan_Belakang" />
-                <ScalarProperty Name="Talang_Air_Ket" ColumnName="Talang_Air_Ket" />
-                <ScalarProperty Name="Talang_Air" ColumnName="Talang_Air" />
-                <ScalarProperty Name="Windshield_Washer_Ket" ColumnName="Windshield_Washer_Ket" />
-                <ScalarProperty Name="Windshield_Washer" ColumnName="Windshield_Washer" />
-                <ScalarProperty Name="Wiper_Blade_Ket" ColumnName="Wiper_Blade_Ket" />
-                <ScalarProperty Name="Wiper_Blade" ColumnName="Wiper_Blade" />
-                <ScalarProperty Name="Spion_Dalam_Ket" ColumnName="Spion_Dalam_Ket" />
-                <ScalarProperty Name="Spion_Dalam" ColumnName="Spion_Dalam" />
-                <ScalarProperty Name="Sandaran_Kepala_Ket" ColumnName="Sandaran_Kepala_Ket" />
-                <ScalarProperty Name="Sandaran_Kepala" ColumnName="Sandaran_Kepala" />
-                <ScalarProperty Name="Sarung_Jok_Ket" ColumnName="Sarung_Jok_Ket" />
-                <ScalarProperty Name="Sarung_Jok" ColumnName="Sarung_Jok" />
-                <ScalarProperty Name="Asbak_Ket" ColumnName="Asbak_Ket" />
-                <ScalarProperty Name="Asbak" ColumnName="Asbak" />
-                <ScalarProperty Name="Lighter_Ket" ColumnName="Lighter_Ket" />
-                <ScalarProperty Name="Lighter" ColumnName="Lighter" />
-                <ScalarProperty Name="Karpet_Ket" ColumnName="Karpet_Ket" />
-                <ScalarProperty Name="Karpet" ColumnName="Karpet" />
-                <ScalarProperty Name="Safety_Belt_Ket" ColumnName="Safety_Belt_Ket" />
-                <ScalarProperty Name="Safety_Belt" ColumnName="Safety_Belt" />
-                <ScalarProperty Name="Air_Conditioner_Ket" ColumnName="Air_Conditioner_Ket" />
-                <ScalarProperty Name="Air_Conditioner" ColumnName="Air_Conditioner" />
-                <ScalarProperty Name="Switch_Mirror_Ket" ColumnName="Switch_Mirror_Ket" />
-                <ScalarProperty Name="Switch_Mirror" ColumnName="Switch_Mirror" />
-                <ScalarProperty Name="Power_Window_Ket" ColumnName="Power_Window_Ket" />
-                <ScalarProperty Name="Power_Window" ColumnName="Power_Window" />
-                <ScalarProperty Name="Central_Lock_Ket" ColumnName="Central_Lock_Ket" />
-                <ScalarProperty Name="Central_Lock" ColumnName="Central_Lock" />
-                <ScalarProperty Name="Alarm_Remote_Key_Ket" ColumnName="Alarm_Remote_Key_Ket" />
-                <ScalarProperty Name="Alarm_Remote_Key" ColumnName="Alarm_Remote_Key" />
-                <ScalarProperty Name="Remote_Tape_Radio_CD_DVD_TV_Player_Ket" ColumnName="Remote_Tape_Radio_CD_DVD_TV_Player_Ket" />
-                <ScalarProperty Name="Remote_Tape_Radio_CD_DVD_TV_Player" ColumnName="Remote_Tape_Radio_CD_DVD_TV_Player" />
-                <ScalarProperty Name="Tape_Radio_CD_DVD_TV_Player_Ket" ColumnName="Tape_Radio_CD_DVD_TV_Player_Ket" />
-                <ScalarProperty Name="Tape_Radio_CD_DVD_TV_Player" ColumnName="Tape_Radio_CD_DVD_TV_Player" />
-                <ScalarProperty Name="Antena_Ket" ColumnName="Antena_Ket" />
-                <ScalarProperty Name="Antena" ColumnName="Antena" />
-                <ScalarProperty Name="Klakson_Ket" ColumnName="Klakson_Ket" />
-                <ScalarProperty Name="Klakson" ColumnName="Klakson" />
-                <ScalarProperty Name="Lampu_Plafond_Depan_dan_Belakang_Ket" ColumnName="Lampu_Plafond_Depan_dan_Belakang_Ket" />
-                <ScalarProperty Name="Lampu_Plafond_Depan_dan_Belakang" ColumnName="Lampu_Plafond_Depan_dan_Belakang" />
-                <ScalarProperty Name="Lampu_Dashboard_Ket" ColumnName="Lampu_Dashboard_Ket" />
-                <ScalarProperty Name="Lampu_Dashboard" ColumnName="Lampu_Dashboard" />
-                <ScalarProperty Name="Lampu_Mundur_Ket" ColumnName="Lampu_Mundur_Ket" />
-                <ScalarProperty Name="Lampu_Mundur" ColumnName="Lampu_Mundur" />
-                <ScalarProperty Name="Lampu_Rem_Ket" ColumnName="Lampu_Rem_Ket" />
-                <ScalarProperty Name="Lampu_Rem" ColumnName="Lampu_Rem" />
-                <ScalarProperty Name="Lampu_Belakang_Ket" ColumnName="Lampu_Belakang_Ket" />
-                <ScalarProperty Name="Lampu_Belakang" ColumnName="Lampu_Belakang" />
-                <ScalarProperty Name="Lampu_Sign_Belakang_Ket" ColumnName="Lampu_Sign_Belakang_Ket" />
-                <ScalarProperty Name="Lampu_Sign_Belakang" ColumnName="Lampu_Sign_Belakang" />
-                <ScalarProperty Name="Lampu_Sign_Depan_Ket" ColumnName="Lampu_Sign_Depan_Ket" />
-                <ScalarProperty Name="Lampu_Sign_Depan" ColumnName="Lampu_Sign_Depan" />
-                <ScalarProperty Name="Lampu_Kabut_Fog_Lamp_Ket" ColumnName="Lampu_Kabut_Fog_Lamp_Ket" />
-                <ScalarProperty Name="Lampu_Kabut_Fog_Lamp" ColumnName="Lampu_Kabut_Fog_Lamp" />
-                <ScalarProperty Name="Lampu_Jauh_Ket" ColumnName="Lampu_Jauh_Ket" />
-                <ScalarProperty Name="Lampu_Jauh" ColumnName="Lampu_Jauh" />
-                <ScalarProperty Name="Lampu_Dekat_Ket" ColumnName="Lampu_Dekat_Ket" />
-                <ScalarProperty Name="Lampu_Dekat" ColumnName="Lampu_Dekat" />
-                <ScalarProperty Name="Lampu_Kecil_Ket" ColumnName="Lampu_Kecil_Ket" />
-                <ScalarProperty Name="Lampu_Kecil" ColumnName="Lampu_Kecil" />
-                <ScalarProperty Name="Automatic_Light_Switch_Ket" ColumnName="Automatic_Light_Switch_Ket" />
-                <ScalarProperty Name="Automatic_Light_Switch" ColumnName="Automatic_Light_Switch" />
-                <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
-                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
-                <ScalarProperty Name="BSTKBefore_ID" ColumnName="BSTKBefore_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tr_BSTKAfters">
             <EntityTypeMapping TypeName="TrustModel.Tr_BSTKAfters">
               <MappingFragment StoreEntitySet="Tr_BSTKAfters">
@@ -1944,6 +1825,128 @@
                 <ScalarProperty Name="Automatic_Light_Switch" ColumnName="Automatic_Light_Switch" />
                 <ScalarProperty Name="BSTKBefore_ID" ColumnName="BSTKBefore_ID" />
                 <ScalarProperty Name="BSTKAfter_ID" ColumnName="BSTKAfter_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tr_BSTKBefores">
+            <EntityTypeMapping TypeName="TrustModel.Tr_BSTKBefores">
+              <MappingFragment StoreEntitySet="Tr_BSTKBefores">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="signature_image" ColumnName="signature_image" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+                <ScalarProperty Name="tutup_dop" ColumnName="tutup_dop" />
+                <ScalarProperty Name="velg_ban" ColumnName="velg_ban" />
+                <ScalarProperty Name="km" ColumnName="km" />
+                <ScalarProperty Name="isi_tangki_ket" ColumnName="isi_tangki_ket" />
+                <ScalarProperty Name="isi_tangki" ColumnName="isi_tangki" />
+                <ScalarProperty Name="fuel" ColumnName="fuel" />
+                <ScalarProperty Name="apar" ColumnName="apar" />
+                <ScalarProperty Name="Foto_Kendaraan_Tampak_Samping_Kiri" ColumnName="Foto_Kendaraan_Tampak_Samping_Kiri" />
+                <ScalarProperty Name="Foto_Kendaraan_Tampak_Samping_Kanan" ColumnName="Foto_Kendaraan_Tampak_Samping_Kanan" />
+                <ScalarProperty Name="Foto_Kendaraan_Tampak_Belakang" ColumnName="Foto_Kendaraan_Tampak_Belakang" />
+                <ScalarProperty Name="Foto_Kendaraan_Tampak_Depan" ColumnName="Foto_Kendaraan_Tampak_Depan" />
+                <ScalarProperty Name="Lap_Kanebo_Ket" ColumnName="Lap_Kanebo_Ket" />
+                <ScalarProperty Name="Lap_Kanebo" ColumnName="Lap_Kanebo" />
+                <ScalarProperty Name="Segitiga_Pengaman_Ket" ColumnName="Segitiga_Pengaman_Ket" />
+                <ScalarProperty Name="Segitiga_Pengaman" ColumnName="Segitiga_Pengaman" />
+                <ScalarProperty Name="P3K_Ket" ColumnName="P3K_Ket" />
+                <ScalarProperty Name="P3K" ColumnName="P3K" />
+                <ScalarProperty Name="Dongkrak_Ket" ColumnName="Dongkrak_Ket" />
+                <ScalarProperty Name="Dongkrak" ColumnName="Dongkrak" />
+                <ScalarProperty Name="Kunci_Stir_Ket" ColumnName="Kunci_Stir_Ket" />
+                <ScalarProperty Name="Kunci_Stir" ColumnName="Kunci_Stir" />
+                <ScalarProperty Name="Kunci_Roda_Busi_Pas_Tang_Ket" ColumnName="Kunci_Roda_Busi_Pas_Tang_Ket" />
+                <ScalarProperty Name="Kunci_Roda_Busi_Pas_Tang" ColumnName="Kunci_Roda_Busi_Pas_Tang" />
+                <ScalarProperty Name="Ban_Serep_Ket" ColumnName="Ban_Serep_Ket" />
+                <ScalarProperty Name="Ban_Serep" ColumnName="Ban_Serep" />
+                <ScalarProperty Name="Buku_Service_Ket" ColumnName="Buku_Service_Ket" />
+                <ScalarProperty Name="Buku_Service" ColumnName="Buku_Service" />
+                <ScalarProperty Name="Owners_Manual_Book_Ket" ColumnName="Owners_Manual_Book_Ket" />
+                <ScalarProperty Name="Owners_Manual_Book" ColumnName="Owners_Manual_Book" />
+                <ScalarProperty Name="Buku_KIR_Stiker_Peneng_Ket" ColumnName="Buku_KIR_Stiker_Peneng_Ket" />
+                <ScalarProperty Name="Buku_KIR_Stiker_Peneng" ColumnName="Buku_KIR_Stiker_Peneng" />
+                <ScalarProperty Name="STNK_Ket" ColumnName="STNK_Ket" />
+                <ScalarProperty Name="STNK" ColumnName="STNK" />
+                <ScalarProperty Name="Kaca_Mobil_dan_Kaca_Film_Ket" ColumnName="Kaca_Mobil_dan_Kaca_Film_Ket" />
+                <ScalarProperty Name="Kaca_Mobil_dan_Kaca_Film" ColumnName="Kaca_Mobil_dan_Kaca_Film" />
+                <ScalarProperty Name="Emblem_Logo_Ket" ColumnName="Emblem_Logo_Ket" />
+                <ScalarProperty Name="Emblem_Logo" ColumnName="Emblem_Logo" />
+                <ScalarProperty Name="Tutup_Bensin_Ket" ColumnName="Tutup_Bensin_Ket" />
+                <ScalarProperty Name="Tutup_Bensin" ColumnName="Tutup_Bensin" />
+                <ScalarProperty Name="Spion_Kiri_Kanan_Ket" ColumnName="Spion_Kiri_Kanan_Ket" />
+                <ScalarProperty Name="Spion_Kiri_Kanan" ColumnName="Spion_Kiri_Kanan" />
+                <ScalarProperty Name="Fender_Lumpur_Depan_dan_Belakang_Ket" ColumnName="Fender_Lumpur_Depan_dan_Belakang_Ket" />
+                <ScalarProperty Name="Fender_Lumpur_Depan_dan_Belakang" ColumnName="Fender_Lumpur_Depan_dan_Belakang" />
+                <ScalarProperty Name="Talang_Air_Ket" ColumnName="Talang_Air_Ket" />
+                <ScalarProperty Name="Talang_Air" ColumnName="Talang_Air" />
+                <ScalarProperty Name="Windshield_Washer_Ket" ColumnName="Windshield_Washer_Ket" />
+                <ScalarProperty Name="Windshield_Washer" ColumnName="Windshield_Washer" />
+                <ScalarProperty Name="Wiper_Blade_Ket" ColumnName="Wiper_Blade_Ket" />
+                <ScalarProperty Name="Wiper_Blade" ColumnName="Wiper_Blade" />
+                <ScalarProperty Name="Spion_Dalam_Ket" ColumnName="Spion_Dalam_Ket" />
+                <ScalarProperty Name="Spion_Dalam" ColumnName="Spion_Dalam" />
+                <ScalarProperty Name="Sandaran_Kepala_Ket" ColumnName="Sandaran_Kepala_Ket" />
+                <ScalarProperty Name="Sandaran_Kepala" ColumnName="Sandaran_Kepala" />
+                <ScalarProperty Name="Sarung_Jok_Ket" ColumnName="Sarung_Jok_Ket" />
+                <ScalarProperty Name="Sarung_Jok" ColumnName="Sarung_Jok" />
+                <ScalarProperty Name="Asbak_Ket" ColumnName="Asbak_Ket" />
+                <ScalarProperty Name="Asbak" ColumnName="Asbak" />
+                <ScalarProperty Name="Lighter_Ket" ColumnName="Lighter_Ket" />
+                <ScalarProperty Name="Lighter" ColumnName="Lighter" />
+                <ScalarProperty Name="Karpet_Ket" ColumnName="Karpet_Ket" />
+                <ScalarProperty Name="Karpet" ColumnName="Karpet" />
+                <ScalarProperty Name="Safety_Belt_Ket" ColumnName="Safety_Belt_Ket" />
+                <ScalarProperty Name="Safety_Belt" ColumnName="Safety_Belt" />
+                <ScalarProperty Name="Air_Conditioner_Ket" ColumnName="Air_Conditioner_Ket" />
+                <ScalarProperty Name="Air_Conditioner" ColumnName="Air_Conditioner" />
+                <ScalarProperty Name="Switch_Mirror_Ket" ColumnName="Switch_Mirror_Ket" />
+                <ScalarProperty Name="Switch_Mirror" ColumnName="Switch_Mirror" />
+                <ScalarProperty Name="Power_Window_Ket" ColumnName="Power_Window_Ket" />
+                <ScalarProperty Name="Power_Window" ColumnName="Power_Window" />
+                <ScalarProperty Name="Central_Lock_Ket" ColumnName="Central_Lock_Ket" />
+                <ScalarProperty Name="Central_Lock" ColumnName="Central_Lock" />
+                <ScalarProperty Name="Alarm_Remote_Key_Ket" ColumnName="Alarm_Remote_Key_Ket" />
+                <ScalarProperty Name="Alarm_Remote_Key" ColumnName="Alarm_Remote_Key" />
+                <ScalarProperty Name="Remote_Tape_Radio_CD_DVD_TV_Player_Ket" ColumnName="Remote_Tape_Radio_CD_DVD_TV_Player_Ket" />
+                <ScalarProperty Name="Remote_Tape_Radio_CD_DVD_TV_Player" ColumnName="Remote_Tape_Radio_CD_DVD_TV_Player" />
+                <ScalarProperty Name="Tape_Radio_CD_DVD_TV_Player_Ket" ColumnName="Tape_Radio_CD_DVD_TV_Player_Ket" />
+                <ScalarProperty Name="Tape_Radio_CD_DVD_TV_Player" ColumnName="Tape_Radio_CD_DVD_TV_Player" />
+                <ScalarProperty Name="Antena_Ket" ColumnName="Antena_Ket" />
+                <ScalarProperty Name="Antena" ColumnName="Antena" />
+                <ScalarProperty Name="Klakson_Ket" ColumnName="Klakson_Ket" />
+                <ScalarProperty Name="Klakson" ColumnName="Klakson" />
+                <ScalarProperty Name="Lampu_Plafond_Depan_dan_Belakang_Ket" ColumnName="Lampu_Plafond_Depan_dan_Belakang_Ket" />
+                <ScalarProperty Name="Lampu_Plafond_Depan_dan_Belakang" ColumnName="Lampu_Plafond_Depan_dan_Belakang" />
+                <ScalarProperty Name="Lampu_Dashboard_Ket" ColumnName="Lampu_Dashboard_Ket" />
+                <ScalarProperty Name="Lampu_Dashboard" ColumnName="Lampu_Dashboard" />
+                <ScalarProperty Name="Lampu_Mundur_Ket" ColumnName="Lampu_Mundur_Ket" />
+                <ScalarProperty Name="Lampu_Mundur" ColumnName="Lampu_Mundur" />
+                <ScalarProperty Name="Lampu_Rem_Ket" ColumnName="Lampu_Rem_Ket" />
+                <ScalarProperty Name="Lampu_Rem" ColumnName="Lampu_Rem" />
+                <ScalarProperty Name="Lampu_Belakang_Ket" ColumnName="Lampu_Belakang_Ket" />
+                <ScalarProperty Name="Lampu_Belakang" ColumnName="Lampu_Belakang" />
+                <ScalarProperty Name="Lampu_Sign_Belakang_Ket" ColumnName="Lampu_Sign_Belakang_Ket" />
+                <ScalarProperty Name="Lampu_Sign_Belakang" ColumnName="Lampu_Sign_Belakang" />
+                <ScalarProperty Name="Lampu_Sign_Depan_Ket" ColumnName="Lampu_Sign_Depan_Ket" />
+                <ScalarProperty Name="Lampu_Sign_Depan" ColumnName="Lampu_Sign_Depan" />
+                <ScalarProperty Name="Lampu_Kabut_Fog_Lamp_Ket" ColumnName="Lampu_Kabut_Fog_Lamp_Ket" />
+                <ScalarProperty Name="Lampu_Kabut_Fog_Lamp" ColumnName="Lampu_Kabut_Fog_Lamp" />
+                <ScalarProperty Name="Lampu_Jauh_Ket" ColumnName="Lampu_Jauh_Ket" />
+                <ScalarProperty Name="Lampu_Jauh" ColumnName="Lampu_Jauh" />
+                <ScalarProperty Name="Lampu_Dekat_Ket" ColumnName="Lampu_Dekat_Ket" />
+                <ScalarProperty Name="Lampu_Dekat" ColumnName="Lampu_Dekat" />
+                <ScalarProperty Name="Lampu_Kecil_Ket" ColumnName="Lampu_Kecil_Ket" />
+                <ScalarProperty Name="Lampu_Kecil" ColumnName="Lampu_Kecil" />
+                <ScalarProperty Name="Automatic_Light_Switch_Ket" ColumnName="Automatic_Light_Switch_Ket" />
+                <ScalarProperty Name="Automatic_Light_Switch" ColumnName="Automatic_Light_Switch" />
+                <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="BSTKBefore_ID" ColumnName="BSTKBefore_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

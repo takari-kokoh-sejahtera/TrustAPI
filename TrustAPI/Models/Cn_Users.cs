@@ -27,10 +27,10 @@ namespace TrustAPI.Models
             this.Ms_Vehicles1 = new HashSet<Ms_Vehicles>();
             this.Ms_Vehicle_Brands1 = new HashSet<Ms_Vehicle_Brands>();
             this.Ms_Vehicle_Models1 = new HashSet<Ms_Vehicle_Models>();
-            this.Tr_BSTKBefores = new HashSet<Tr_BSTKBefores>();
-            this.Tr_BSTKBefores1 = new HashSet<Tr_BSTKBefores>();
             this.Tr_BSTKAfters = new HashSet<Tr_BSTKAfters>();
             this.Tr_BSTKAfters1 = new HashSet<Tr_BSTKAfters>();
+            this.Tr_BSTKBefores = new HashSet<Tr_BSTKBefores>();
+            this.Tr_BSTKBefores1 = new HashSet<Tr_BSTKBefores>();
         }
     
         public int User_ID { get; set; }
@@ -74,12 +74,12 @@ namespace TrustAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ms_Vehicle_Models> Ms_Vehicle_Models1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tr_BSTKBefores> Tr_BSTKBefores { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tr_BSTKBefores> Tr_BSTKBefores1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tr_BSTKAfters> Tr_BSTKAfters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tr_BSTKAfters> Tr_BSTKAfters1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tr_BSTKBefores> Tr_BSTKBefores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tr_BSTKBefores> Tr_BSTKBefores1 { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace TrustAPI.Controllers
                 result = "license no does't exist!";
                 return false;
             }
-            else if (!db.Cn_Users.Any(x => x.User_Name == BSTKBefore.CreatedByStr))
+            else if (!db.Cn_Users.Any(x => x.User_ID == BSTKBefore.CreatedBy))
             {
                 result = "User Name does't exist!";
                 return false;
@@ -71,7 +71,7 @@ namespace TrustAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (Validasi(BSTKBeforeRequest, results.Message))
+            if (!Validasi(BSTKBeforeRequest, results.Message))
             {
                 return Json(results);
             }
@@ -191,9 +191,9 @@ namespace TrustAPI.Controllers
                     bstk.signature = BSTKBeforeRequest.signature;
                     bstk.signature_image = BSTKBeforeRequest.signature_image;
                     bstk.CreatedDate = DateTime.Now;
-                    bstk.CreatedBy = db.Cn_Users.Where(x => x.User_Name == BSTKBeforeRequest.CreatedByStr).Select(x => x.User_ID).FirstOrDefault();
+                    bstk.CreatedBy = BSTKBeforeRequest.CreatedBy;
+                    bstk.IsCompleted = false;
                     bstk.IsDeleted = false;
-
                     db.Tr_BSTKBefores.Add(bstk);
                     db.SaveChanges();
                     if (BSTKBeforeRequest.Foto_Kendaraan_Tampak_Depan != "" && !SaveImage(BSTKBeforeRequest.Foto_Kendaraan_Tampak_Depan, bstk.BSTKBefore_ID.ToString(), "BSTKBefore\\Depan"))

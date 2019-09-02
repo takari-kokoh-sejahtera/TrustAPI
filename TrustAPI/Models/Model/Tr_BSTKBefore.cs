@@ -113,6 +113,23 @@ namespace TrustAPI.Models.Model
         public string tutup_dop { get; set; }
         public string signature { get; set; }
         public string signature_image { get; set; }
-        public string CreatedByStr { get; set; }
+        public int CreatedBy { get; set; }
     }
+    public class Tr_BSTKBeforeForAfter {
+        public int BSTKBefore_ID { get; set; }
+        public string Company_Name { get; set; }
+        public string license_no { get; set; }
+        public string Type { get; set; }
+
+        private string gabungan;
+        public string Gabungan
+        {
+            get {   
+                gabungan = license_no + ";" + Company_Name + ";" + Type+ ";" + BSTKBefore_ID.ToString();
+                return gabungan;
+            }
+        }
+
+    }
+
 }
