@@ -38,7 +38,7 @@ namespace TrustAPI.Controllers
             return Ok(tr_BSTKAfters);
         }
 
-        private bool Validasi(Tr_BSTKAfter BSTKAfter, string result)
+        private bool Validasi(Tr_BSTKAfter BSTKAfter,ref string result)
         {
             try
             {
@@ -102,8 +102,10 @@ namespace TrustAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (!Validasi(tr_BSTKAfters, results.Message))
+            string messages = "";
+            if (!Validasi(tr_BSTKAfters, ref messages))
             {
+                results.Message = messages;
                 return Json(results);
             }
 

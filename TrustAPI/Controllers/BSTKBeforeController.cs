@@ -21,9 +21,9 @@ namespace TrustAPI.Controllers
     {
         private EntityTRUST db = new EntityTRUST();
 
-        private bool Validasi(Tr_BSTKBefore BSTKBefore, string result)
+        private bool Validasi(Tr_BSTKBefore BSTKBefore,ref string result)
         {
-            if (db.Ms_Customers.Any(x => x.Company_Name == BSTKBefore.Nama_Customer))
+            if (!db.Ms_Customers.Any(x => x.Company_Name == BSTKBefore.Nama_Customer))
             {
                 result = "Company Name does't exist!";
                 return false;
@@ -71,8 +71,10 @@ namespace TrustAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (!Validasi(BSTKBeforeRequest, results.Message))
+            string messages="";
+            if (!Validasi(BSTKBeforeRequest, ref messages))
             {
+                results.Message = messages;
                 return Json(results);
             }
 

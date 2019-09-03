@@ -165,6 +165,7 @@
     <Compile Include="Controllers\BSTKAfterController.cs" />
     <Compile Include="Controllers\BSTKBeforeController.cs" />
     <Compile Include="Controllers\BSTKBeforeForAfterController.cs" />
+    <Compile Include="Controllers\BSTKViewController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -190,6 +191,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTRUST.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model\BSTKView.cs" />
     <Compile Include="Models\Model\Tr_BSTKAfter.cs" />
     <Compile Include="Models\Model\Tr_BSTKBefore.cs" />
     <Compile Include="Models\Model\Ms_Customer.cs" />
