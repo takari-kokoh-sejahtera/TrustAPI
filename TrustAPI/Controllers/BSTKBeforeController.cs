@@ -19,9 +19,267 @@ namespace TrustAPI.Controllers
 {
     public class BSTKBeforeController : ApiController
     {
+        public IQueryable<Tr_BSTKBefore> GetMs_Vehicles()
+        {
+            return db.Tr_BSTKBefores.Where(x => x.IsDeleted == false).Select(x => new Tr_BSTKBefore
+            {
+                Nama_Customer = x.Ms_Customers.Company_Name,
+                Nomor_Plat_Kendaraan = x.Ms_Vehicles.license_no,
+                Automatic_Light_Switch = x.Automatic_Light_Switch,
+                Automatic_Light_Switch_Ket = x.Automatic_Light_Switch_Ket,
+                Lampu_Kecil = x.Lampu_Kecil,
+                Lampu_Kecil_Ket = x.Lampu_Kecil_Ket,
+                Lampu_Dekat = x.Lampu_Dekat,
+                Lampu_Dekat_Ket = x.Lampu_Dekat_Ket,
+                Lampu_Jauh = x.Lampu_Jauh,
+                Lampu_Jauh_Ket = x.Lampu_Jauh_Ket,
+                Lampu_Kabut_Fog_Lamp = x.Lampu_Kabut_Fog_Lamp,
+                Lampu_Kabut_Fog_Lamp_Ket = x.Lampu_Kabut_Fog_Lamp_Ket,
+                Lampu_Sign_Depan = x.Lampu_Sign_Depan,
+                Lampu_Sign_Depan_Ket = x.Lampu_Sign_Depan_Ket,
+                Lampu_Sign_Belakang = x.Lampu_Sign_Belakang,
+                Lampu_Sign_Belakang_Ket = x.Lampu_Sign_Belakang_Ket,
+                Lampu_Belakang = x.Lampu_Belakang,
+                Lampu_Belakang_Ket = x.Lampu_Belakang_Ket,
+                Lampu_Rem = x.Lampu_Rem,
+                Lampu_Rem_Ket = x.Lampu_Rem_Ket,
+                Lampu_Mundur = x.Lampu_Mundur,
+                Lampu_Mundur_Ket = x.Lampu_Mundur_Ket,
+                Lampu_Dashboard = x.Lampu_Dashboard,
+                Lampu_Dashboard_Ket = x.Lampu_Dashboard_Ket,
+                Lampu_Plafond_Depan_dan_Belakang = x.Lampu_Plafond_Depan_dan_Belakang,
+                Lampu_Plafond_Depan_dan_Belakang_Ket = x.Lampu_Plafond_Depan_dan_Belakang_Ket,
+                Klakson = x.Klakson,
+                Klakson_Ket = x.Klakson_Ket,
+                Antena = x.Antena,
+                Antena_Ket = x.Antena_Ket,
+                Tape_Radio_CD_DVD_TV_Player = x.Tape_Radio_CD_DVD_TV_Player,
+                Tape_Radio_CD_DVD_TV_Player_Ket = x.Tape_Radio_CD_DVD_TV_Player_Ket,
+                Remote_Tape_Radio_CD_DVD_TV_Player = x.Remote_Tape_Radio_CD_DVD_TV_Player,
+                Remote_Tape_Radio_CD_DVD_TV_Player_Ket = x.Remote_Tape_Radio_CD_DVD_TV_Player_Ket,
+                Alarm_Remote_Key = x.Alarm_Remote_Key,
+                Alarm_Remote_Key_Ket = x.Alarm_Remote_Key_Ket,
+                Central_Lock = x.Central_Lock,
+                Central_Lock_Ket = x.Central_Lock_Ket,
+                Power_Window = x.Power_Window,
+                Power_Window_Ket = x.Power_Window_Ket,
+                Switch_Mirror = x.Switch_Mirror,
+                Switch_Mirror_Ket = x.Switch_Mirror_Ket,
+                Air_Conditioner = x.Air_Conditioner,
+                Air_Conditioner_Ket = x.Air_Conditioner_Ket,
+                Safety_Belt = x.Safety_Belt,
+                Safety_Belt_Ket = x.Safety_Belt_Ket,
+                Karpet = x.Karpet,
+                Karpet_Ket = x.Karpet_Ket,
+                Lighter = x.Lighter,
+                Lighter_Ket = x.Lighter_Ket,
+                Asbak = x.Asbak,
+                Asbak_Ket = x.Asbak_Ket,
+                Sarung_Jok = x.Sarung_Jok,
+                Sarung_Jok_Ket = x.Sarung_Jok_Ket,
+                Sandaran_Kepala = x.Sandaran_Kepala,
+                Sandaran_Kepala_Ket = x.Sandaran_Kepala_Ket,
+                Spion_Dalam = x.Spion_Dalam,
+                Spion_Dalam_Ket = x.Spion_Dalam_Ket,
+                Wiper_Blade = x.Wiper_Blade,
+                Wiper_Blade_Ket = x.Wiper_Blade_Ket,
+                Windshield_Washer = x.Windshield_Washer,
+                Windshield_Washer_Ket = x.Windshield_Washer_Ket,
+                Talang_Air = x.Talang_Air,
+                Talang_Air_Ket = x.Talang_Air_Ket,
+                Fender_Lumpur_Depan_dan_Belakang = x.Fender_Lumpur_Depan_dan_Belakang,
+                Fender_Lumpur_Depan_dan_Belakang_Ket = x.Fender_Lumpur_Depan_dan_Belakang_Ket,
+                Spion_Kiri_Kanan = x.Spion_Kiri_Kanan,
+                Spion_Kiri_Kanan_Ket = x.Spion_Kiri_Kanan_Ket,
+                Tutup_Bensin = x.Tutup_Bensin,
+                Tutup_Bensin_Ket = x.Tutup_Bensin_Ket,
+                Emblem_Logo = x.Emblem_Logo,
+                Emblem_Logo_Ket = x.Emblem_Logo_Ket,
+                Kaca_Mobil_dan_Kaca_Film = x.Kaca_Mobil_dan_Kaca_Film,
+                Kaca_Mobil_dan_Kaca_Film_Ket = x.Kaca_Mobil_dan_Kaca_Film_Ket,
+                STNK = x.STNK,
+                STNK_Ket = x.STNK_Ket,
+                Buku_KIR_Stiker_Peneng = x.Buku_KIR_Stiker_Peneng,
+                Buku_KIR_Stiker_Peneng_Ket = x.Buku_KIR_Stiker_Peneng_Ket,
+                Owners_Manual_Book = x.Owners_Manual_Book,
+                Owners_Manual_Book_Ket = x.Owners_Manual_Book_Ket,
+                Buku_Service = x.Buku_Service,
+                Buku_Service_Ket = x.Buku_Service_Ket,
+                Ban_Serep = x.Ban_Serep,
+                Ban_Serep_Ket = x.Ban_Serep_Ket,
+                Kunci_Roda_Busi_Pas_Tang = x.Kunci_Roda_Busi_Pas_Tang,
+                Kunci_Roda_Busi_Pas_Tang_Ket = x.Kunci_Roda_Busi_Pas_Tang_Ket,
+                Kunci_Stir = x.Kunci_Stir,
+                Kunci_Stir_Ket = x.Kunci_Stir_Ket,
+                Dongkrak = x.Dongkrak,
+                Dongkrak_Ket = x.Dongkrak_Ket,
+                P3K = x.P3K,
+                P3K_Ket = x.P3K_Ket,
+                Segitiga_Pengaman = x.Segitiga_Pengaman,
+                Segitiga_Pengaman_Ket = x.Segitiga_Pengaman_Ket,
+                Lap_Kanebo = x.Lap_Kanebo,
+                Lap_Kanebo_Ket = x.Lap_Kanebo_Ket,
+                Foto_Kendaraan_Tampak_Depan = x.Foto_Kendaraan_Tampak_Depan,
+                Foto_Kendaraan_Tampak_Belakang = x.Foto_Kendaraan_Tampak_Belakang,
+                Foto_Kendaraan_Tampak_Samping_Kanan = x.Foto_Kendaraan_Tampak_Samping_Kanan,
+                Foto_Kendaraan_Tampak_Samping_Kiri = x.Foto_Kendaraan_Tampak_Samping_Kiri,
+                apar = x.apar,
+                fuel = x.fuel,
+                isi_tangki = x.isi_tangki,
+                isi_tangki_ket = x.isi_tangki_ket,
+                km = x.km,
+                velg_ban = x.velg_ban,
+                tutup_dop = x.tutup_dop,
+                signature = x.signature,
+                signature_image = x.signature_image,
+                CreatedBy = x.CreatedBy
+            });
+        }
+
+        public Tr_BSTKBefore GetMs_Vehicles(int id)
+        {
+            Tr_BSTKBefore bstk = db.Tr_BSTKBefores.Where(x => x.IsDeleted == false && x.BSTKBefore_ID == id).Select(x => new Tr_BSTKBefore
+            {
+                Nama_Customer = x.Ms_Customers.Company_Name,
+                Nomor_Plat_Kendaraan = x.Ms_Vehicles.license_no,
+                Automatic_Light_Switch = x.Automatic_Light_Switch,
+                Automatic_Light_Switch_Ket = x.Automatic_Light_Switch_Ket,
+                Lampu_Kecil = x.Lampu_Kecil,
+                Lampu_Kecil_Ket = x.Lampu_Kecil_Ket,
+                Lampu_Dekat = x.Lampu_Dekat,
+                Lampu_Dekat_Ket = x.Lampu_Dekat_Ket,
+                Lampu_Jauh = x.Lampu_Jauh,
+                Lampu_Jauh_Ket = x.Lampu_Jauh_Ket,
+                Lampu_Kabut_Fog_Lamp = x.Lampu_Kabut_Fog_Lamp,
+                Lampu_Kabut_Fog_Lamp_Ket = x.Lampu_Kabut_Fog_Lamp_Ket,
+                Lampu_Sign_Depan = x.Lampu_Sign_Depan,
+                Lampu_Sign_Depan_Ket = x.Lampu_Sign_Depan_Ket,
+                Lampu_Sign_Belakang = x.Lampu_Sign_Belakang,
+                Lampu_Sign_Belakang_Ket = x.Lampu_Sign_Belakang_Ket,
+                Lampu_Belakang = x.Lampu_Belakang,
+                Lampu_Belakang_Ket = x.Lampu_Belakang_Ket,
+                Lampu_Rem = x.Lampu_Rem,
+                Lampu_Rem_Ket = x.Lampu_Rem_Ket,
+                Lampu_Mundur = x.Lampu_Mundur,
+                Lampu_Mundur_Ket = x.Lampu_Mundur_Ket,
+                Lampu_Dashboard = x.Lampu_Dashboard,
+                Lampu_Dashboard_Ket = x.Lampu_Dashboard_Ket,
+                Lampu_Plafond_Depan_dan_Belakang = x.Lampu_Plafond_Depan_dan_Belakang,
+                Lampu_Plafond_Depan_dan_Belakang_Ket = x.Lampu_Plafond_Depan_dan_Belakang_Ket,
+                Klakson = x.Klakson,
+                Klakson_Ket = x.Klakson_Ket,
+                Antena = x.Antena,
+                Antena_Ket = x.Antena_Ket,
+                Tape_Radio_CD_DVD_TV_Player = x.Tape_Radio_CD_DVD_TV_Player,
+                Tape_Radio_CD_DVD_TV_Player_Ket = x.Tape_Radio_CD_DVD_TV_Player_Ket,
+                Remote_Tape_Radio_CD_DVD_TV_Player = x.Remote_Tape_Radio_CD_DVD_TV_Player,
+                Remote_Tape_Radio_CD_DVD_TV_Player_Ket = x.Remote_Tape_Radio_CD_DVD_TV_Player_Ket,
+                Alarm_Remote_Key = x.Alarm_Remote_Key,
+                Alarm_Remote_Key_Ket = x.Alarm_Remote_Key_Ket,
+                Central_Lock = x.Central_Lock,
+                Central_Lock_Ket = x.Central_Lock_Ket,
+                Power_Window = x.Power_Window,
+                Power_Window_Ket = x.Power_Window_Ket,
+                Switch_Mirror = x.Switch_Mirror,
+                Switch_Mirror_Ket = x.Switch_Mirror_Ket,
+                Air_Conditioner = x.Air_Conditioner,
+                Air_Conditioner_Ket = x.Air_Conditioner_Ket,
+                Safety_Belt = x.Safety_Belt,
+                Safety_Belt_Ket = x.Safety_Belt_Ket,
+                Karpet = x.Karpet,
+                Karpet_Ket = x.Karpet_Ket,
+                Lighter = x.Lighter,
+                Lighter_Ket = x.Lighter_Ket,
+                Asbak = x.Asbak,
+                Asbak_Ket = x.Asbak_Ket,
+                Sarung_Jok = x.Sarung_Jok,
+                Sarung_Jok_Ket = x.Sarung_Jok_Ket,
+                Sandaran_Kepala = x.Sandaran_Kepala,
+                Sandaran_Kepala_Ket = x.Sandaran_Kepala_Ket,
+                Spion_Dalam = x.Spion_Dalam,
+                Spion_Dalam_Ket = x.Spion_Dalam_Ket,
+                Wiper_Blade = x.Wiper_Blade,
+                Wiper_Blade_Ket = x.Wiper_Blade_Ket,
+                Windshield_Washer = x.Windshield_Washer,
+                Windshield_Washer_Ket = x.Windshield_Washer_Ket,
+                Talang_Air = x.Talang_Air,
+                Talang_Air_Ket = x.Talang_Air_Ket,
+                Fender_Lumpur_Depan_dan_Belakang = x.Fender_Lumpur_Depan_dan_Belakang,
+                Fender_Lumpur_Depan_dan_Belakang_Ket = x.Fender_Lumpur_Depan_dan_Belakang_Ket,
+                Spion_Kiri_Kanan = x.Spion_Kiri_Kanan,
+                Spion_Kiri_Kanan_Ket = x.Spion_Kiri_Kanan_Ket,
+                Tutup_Bensin = x.Tutup_Bensin,
+                Tutup_Bensin_Ket = x.Tutup_Bensin_Ket,
+                Emblem_Logo = x.Emblem_Logo,
+                Emblem_Logo_Ket = x.Emblem_Logo_Ket,
+                Kaca_Mobil_dan_Kaca_Film = x.Kaca_Mobil_dan_Kaca_Film,
+                Kaca_Mobil_dan_Kaca_Film_Ket = x.Kaca_Mobil_dan_Kaca_Film_Ket,
+                STNK = x.STNK,
+                STNK_Ket = x.STNK_Ket,
+                Buku_KIR_Stiker_Peneng = x.Buku_KIR_Stiker_Peneng,
+                Buku_KIR_Stiker_Peneng_Ket = x.Buku_KIR_Stiker_Peneng_Ket,
+                Owners_Manual_Book = x.Owners_Manual_Book,
+                Owners_Manual_Book_Ket = x.Owners_Manual_Book_Ket,
+                Buku_Service = x.Buku_Service,
+                Buku_Service_Ket = x.Buku_Service_Ket,
+                Ban_Serep = x.Ban_Serep,
+                Ban_Serep_Ket = x.Ban_Serep_Ket,
+                Kunci_Roda_Busi_Pas_Tang = x.Kunci_Roda_Busi_Pas_Tang,
+                Kunci_Roda_Busi_Pas_Tang_Ket = x.Kunci_Roda_Busi_Pas_Tang_Ket,
+                Kunci_Stir = x.Kunci_Stir,
+                Kunci_Stir_Ket = x.Kunci_Stir_Ket,
+                Dongkrak = x.Dongkrak,
+                Dongkrak_Ket = x.Dongkrak_Ket,
+                P3K = x.P3K,
+                P3K_Ket = x.P3K_Ket,
+                Segitiga_Pengaman = x.Segitiga_Pengaman,
+                Segitiga_Pengaman_Ket = x.Segitiga_Pengaman_Ket,
+                Lap_Kanebo = x.Lap_Kanebo,
+                Lap_Kanebo_Ket = x.Lap_Kanebo_Ket,
+                Foto_Kendaraan_Tampak_Depan = x.Foto_Kendaraan_Tampak_Depan,
+                Foto_Kendaraan_Tampak_Belakang = x.Foto_Kendaraan_Tampak_Belakang,
+                Foto_Kendaraan_Tampak_Samping_Kanan = x.Foto_Kendaraan_Tampak_Samping_Kanan,
+                Foto_Kendaraan_Tampak_Samping_Kiri = x.Foto_Kendaraan_Tampak_Samping_Kiri,
+                apar = x.apar,
+                fuel = x.fuel,
+                isi_tangki = x.isi_tangki,
+                isi_tangki_ket = x.isi_tangki_ket,
+                km = x.km,
+                velg_ban = x.velg_ban,
+                tutup_dop = x.tutup_dop,
+                signature = x.signature,
+                signature_image = x.signature_image,
+                CreatedBy = x.CreatedBy
+            }).FirstOrDefault();
+            if (bstk == null)
+            {
+                return null;
+            }
+
+            return bstk;
+        }
+
+        public Result Delete(int id)
+        {
+            Result result = new Result();
+            result.Status = "Error";
+            if (!db.Tr_BSTKBefores.Any(x => x.BSTKBefore_ID == id && x.IsDeleted == false))
+            {
+                result.Message = "BSTK Before ID not exists";
+            }
+            else
+            {
+                var bstkBefore = db.Tr_BSTKBefores.Where(x => x.BSTKBefore_ID == id).FirstOrDefault();
+                bstkBefore.IsDeleted = true;
+                db.SaveChanges();
+                result.Status = "Success";
+            }
+            return result;
+        }
+
         private EntityTRUST db = new EntityTRUST();
 
-        private bool Validasi(Tr_BSTKBefore BSTKBefore,ref string result)
+        private bool Validasi(Tr_BSTKBefore BSTKBefore, ref string result)
         {
             if (!db.Ms_Customers.Any(x => x.Company_Name == BSTKBefore.Nama_Customer))
             {
@@ -71,7 +329,7 @@ namespace TrustAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            string messages="";
+            string messages = "";
             if (!Validasi(BSTKBeforeRequest, ref messages))
             {
                 results.Message = messages;
