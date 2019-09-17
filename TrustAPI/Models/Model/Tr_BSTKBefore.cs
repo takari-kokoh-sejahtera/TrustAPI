@@ -114,6 +114,8 @@ namespace TrustAPI.Models.Model
         public string signature { get; set; }
         public string signature_image { get; set; }
         public int CreatedBy { get; set; }
+        public bool IsEdited { get; set; }
+        public int? BSTKBefore_ID { get; set; }
     }
     public class Tr_BSTKBeforeForAfter {
         public int BSTKBefore_ID { get; set; }
